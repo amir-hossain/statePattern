@@ -9,49 +9,37 @@ public class HasCard implements State{
 		
 	}
 
-	public String insertCard() {
+	public void insertCard() {
 		// TODO Auto-generated method stub
-		return "There is already a card inserted";
+		System.out.println( "There is already a card inserted");
 	}
 
-	public String ejectCard() {
+	public void ejectCard() {
 		
 		maichine.setState(maichine.noCard);
 		
-		return "card ejected sucessfully";
+		System.out.println( "card ejected sucessfully");
 	}
 
-	public String enterPin(int pin) {
+	public void enterPin(int pin) {
 		
 		if(pin==123) {
 			
 			this.maichine.setState(maichine.hasPin);
 			
-			return "pin entered sucessfully";
+			System.out.println( "pin entered sucessfully");
 			
 		}else {
 			
-			return "wrong pin";
+			System.out.println( "wrong pin");
 			
 		}
 	
 	}
 
-	public String requestCash(int cash) {
+	public void requestCash(int cash) {
 		
-		if(cash<=maichine.money) {
-			
-			maichine.money=maichine.money-cash;
-			
-			this.maichine.setState(maichine.noCard);
-			
-			return "you withdraw "+cash+" TK";
-			
-		}else {
-			
-			return "insufficient balance";
-			
-		}
+		System.out.println( "Please enter the pin first");
 			
 	}
 

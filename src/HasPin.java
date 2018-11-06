@@ -1,28 +1,54 @@
 
-public class HasPin implements State{
+public class HasPin implements State {
 
-	@Override
-	public String insertCard() {
+	private AtmMachine atmMachine;
 
-		return "You can not enter multiple card at once,Please eject previous card";
+	public HasPin(AtmMachine atmMachine) {
+
+		this.atmMachine = atmMachine;
 	}
 
 	@Override
-	public String ejectCard() {
-		// TODO Auto-generated method stub
-		return null;
+	public void insertCard() {
+
+		System.out.println("You can not enter multiple card at once,Please eject previous card");
 	}
 
 	@Override
-	public String enterPin(int pin) {
-		// TODO Auto-generated method stub
-		return null;
+	public void ejectCard() {
+
+		atmMachine.setState(atmMachine.noCard);
+
+		System.out.println("card ejected sucessfully");
 	}
 
 	@Override
-	public String requestCash(int cash) {
+	public void enterPin(int pin) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("You already enter a correnct pin");
+	}
+
+	@Override
+	public void requestCash(int cash) {
+		if (cash<atmMachine.money) {
+
+			atmMachine.money = atmMachine.money - cash;
+
+			System.out.println("Your withdraw amount is " + cash);
+
+			atmMachine.setState(atmMachine.noCard);
+
+			System.out.println("card ejected");
+
+		} else {
+
+			System.out.println("insufficient balance");
+
+			atmMachine.setState(atmMachine.noCard);
+
+			System.out.println("card ejected");
+		}
+
 	}
 
 }

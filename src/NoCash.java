@@ -1,28 +1,38 @@
 
-public class NoCash implements State{
+public class NoCash implements State {
 
-	@Override
-	public String insertCard() {
-		// TODO Auto-generated method stub
-		return null;
+	private AtmMachine atmMachine;
+
+	public NoCash(AtmMachine atmMachine) {
+
+		this.atmMachine = atmMachine;
+
 	}
 
 	@Override
-	public String ejectCard() {
-		// TODO Auto-generated method stub
-		return null;
+	public void insertCard() {
+
+		System.out.println( "no cash");
 	}
 
 	@Override
-	public String enterPin(int pin) {
-		// TODO Auto-generated method stub
-		return null;
+	public void ejectCard() {
+		
+		atmMachine.setState(atmMachine.noCard);
+
+		System.out.println( "card ejected sucessfully");
 	}
 
 	@Override
-	public String requestCash(int cash) {
-		// TODO Auto-generated method stub
-		return null;
+	public void enterPin(int pin) {
+		
+		System.out.println( "no cash");
+	}
+
+	@Override
+	public void requestCash(int cash) {
+		
+		System.out.println( "no cash");
 	}
 
 }
